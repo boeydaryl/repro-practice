@@ -7,17 +7,18 @@ rule all:
     Collect the main outputs of the workflow.
     """
     input:
-        expand("results/{substr}.csv", substr = config["dates"])
-
+        #expand("temp/{substr}.csv", substr = config["dates"])
+        expand("results/{substr}_clean.csv", substr = config["dates"])
 
 rule get_csv_by_url:
     """
     Collect samples CSVs for workflow
     """
     output:
-        "results/{date}.csv"
+        "temp/{date}.csv"
     log:
         "results/logs/get_csvs/.{date}.log"
+    shadow: "minimal"
     params:
         url_path = lambda wildcards: config["surveys"][wildcards.date]
     shell:
@@ -25,3 +26,15 @@ rule get_csv_by_url:
         wget {params.url_path} -O {output} -o {log}
         """
 
+rule clean_csvs:
+    """
+    Clean sample CSVs with clean_csv.py for visualisation
+    """
+    input:
+        "temp/{date}.csv"
+    output:
+        "results/{date}_clean.csv"
+    shell:
+        """
+        python clean_csv.py {input} {output}
+        """
