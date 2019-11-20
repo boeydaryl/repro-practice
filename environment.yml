@@ -1,0 +1,19 @@
+channels:
+- conda-forge
+- bioconda
+dependencies:
+- python=3.6
+
+# The workflow manager
+- snakemake-minimal=5.3.0
+# For visualizing workflows
+- graphviz=2.38.0
+- xorg-libxrender
+- xorg-libxpm
+# For downloading files
+- wget
+# For beautiful visualization
+- jupyter
+# For datawork
+- numpy
+- pandas
