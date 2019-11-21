@@ -1,0 +1,11 @@
+--2019-11-21 10:43:05--  https://docs.google.com/spreadsheets/d/1mBp857raqQk32xGnQHd6Ys8oZALgf6KaFehfdwqM53s/export?format=csv
+Slar upp docs.google.com (docs.google.com)... 172.217.20.110
+Ansluter till docs.google.com (docs.google.com)|172.217.20.110|:443... ansluten.
+HTTP-beg"aran skickad, v"antar pa svar... 200 OK
+L"angd: ospecificerat [text/csv]
+Sparar till: "temp/2019_05.csv"
+
+     0K ..                                                      215K=0.01s
+
+2019-11-21 10:43:05 (215 KB/s) - "temp/2019_05.csv" sparades [2862]
+

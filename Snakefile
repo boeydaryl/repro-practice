@@ -8,7 +8,8 @@ rule all:
     """
     input:
         #expand("temp/{substr}.csv", substr = config["dates"])
-        expand("results/{substr}_clean.csv", substr = config["dates"])
+        expand("results/{substr}_clean.csv", substr = config["dates"]),
+        dir = directory("results/final")
 
 rule get_csv_by_url:
     """
@@ -37,4 +38,17 @@ rule clean_csvs:
     shell:
         """
         python clean_csv.py {input} {output}
+        """
+
+rule make_plot:
+    """
+    For plotting in markdown document
+    """
+    input:
+        expand("results/{date}_clean.csv", date = config["dates"])
+    output:
+        directory("results/final")
+    shell:
+        """
+        python plot.py {input} --outdir {output}
         """

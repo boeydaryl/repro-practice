@@ -17,3 +17,7 @@ dependencies:
 # For datawork
 - numpy
 - pandas
+# For plotting
+- matplotlib
+- seaborn
+
